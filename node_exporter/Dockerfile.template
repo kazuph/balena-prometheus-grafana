@@ -7,5 +7,10 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 # Expose the port Prometheus uses
 EXPOSE 9100
 
+RUN mkdir -p /app/customs/
+COPY customs/*.prom /app/customs/
+COPY *.sh /app/
+
 # Start Node Exporter
-CMD [ "/usr/bin/node_exporter" ]
+CMD [ "/usr/bin/node_exporter", "--collector.textfile.directory=/app/customs" ]
+
