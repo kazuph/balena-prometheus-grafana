@@ -7,6 +7,6 @@ otempb="`expr $ctemp % 1000`"
 otemp="${otempa}.${otempb}"
 line1="# HELP ${met} CPU temperature"
 line2="# TYPE ${met} gauge"
-/bin/echo "${line1}\n${line2}\n${met} ${otemp}" > ${dir}${met}.prom.$$
+/bin/echo -e "${line1}\n${line2}\n${met} ${otemp}" > ${dir}${met}.prom.$$
 /bin/mv ${dir}${met}.prom.$$ ${dir}${met}.prom
 /bin/chmod 666 ${dir}${met}.prom    #出力ファイルのパーミッション指定
